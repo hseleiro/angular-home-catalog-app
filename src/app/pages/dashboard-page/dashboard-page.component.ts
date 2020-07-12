@@ -10,6 +10,7 @@ export class DashboardPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.teste = 'teste'
   }
 
 }
