@@ -8,13 +8,15 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ReqInterceptorService} from './req-interceptor.service';
+import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     SignupPageComponent,
-    DashboardPageComponent
+    DashboardPageComponent,
+    WelcomePageComponent
   ],
   imports: [
     BrowserModule,
