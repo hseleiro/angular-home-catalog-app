@@ -1,5 +1,9 @@
-<div class="p-d-flex">
-    <div class="p-mr-2">Item 1</div>
-    <div class="p-mr-2">Item 2</div>
-    <div>Item 3</div>
+<div class="p-d-flex p-jc-between navigation">
+    <div class="navigation-logo">
+        <span class="primary">Ugo</span><span class="secondary">.</span>
+    </div>
+    <div class="navigation-actions" *ngIf="isAdmin">
+        <i class="{{options.icons.bell}}"></i>
+        <i class="{{options.icons.user}}"></i>
+    </div>
 </div>

@@ -8,7 +8,8 @@ import {NavigationOptions} from "../../models/navigation/navigation-options";
 })
 export class HeaderNavigationComponent implements OnInit {
 
-  @Input() options: NavigationOptions[] = [];
+  @Input() options: NavigationOptions;
+  @Input() isAdmin: boolean;
 
   constructor() { }
 

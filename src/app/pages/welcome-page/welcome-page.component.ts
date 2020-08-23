@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NavigationOptions} from "../../core/models/navigation/navigation-options";
 
 @Component({
   selector: 'app-welcome-page',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomePageComponent implements OnInit {
 
+  menuOptions: NavigationOptions;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.menuOptions = {
+      icons: {
+        bell: 'pi pi-bell',
+        user: 'pi pi-user'
+      }
+    }
   }
 
 }

@@ -1,1 +1,53 @@
-/* You can add global styles to this file, and also import other style files */
+@use "sass:map";
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, code,
+del, dfn, em, img, q, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: 'Alata', sans-serif;
+}
+
+// General
+$primary-color: #5075d0;
+$secondary-color: #e779e2;
+$borders-primary-color: #ecf0f1;
+$icons-font-size: 0.6em;
+
+// Navigation
+$navigation-menu-border-color: $borders-primary-color;
+$navigation-menu-padding: 5px 10px;
+$navigation-menu-iconsFontSize: $icons-font-size;
+$navigation-menu: (
+        "border-color": $navigation-menu-border-color,
+        "padding": $navigation-menu-padding,
+        "iconsFontSize": $navigation-menu-iconsFontSize,
+        "primary-color": $primary-color,
+        "secondary-color": $secondary-color
+);
+
+.navigation {
+  border-bottom: 1px solid map.get($navigation-menu, "border-color");
+  padding: map.get($navigation-menu, "padding");
+}
+
+.navigation .navigation-logo .primary {
+  color: map.get($navigation-menu, "primary-color")
+}
+
+.navigation .navigation-logo .secondary {
+  color: map.get($navigation-menu, "secondary-color")
+}
+
+.navigation .navigation-actions i {
+  font-size: map.get($navigation-menu, "iconsFontSize");
+  margin-left: 5px;
+}
+

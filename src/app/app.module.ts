@@ -9,6 +9,8 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ReqInterceptorService} from './req-interceptor.service';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
+import {ButtonModule} from "primeng";
+import { HeaderNavigationComponent } from './core/navigation/header-navigation/header-navigation.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +18,15 @@ import { WelcomePageComponent } from './pages/welcome-page/welcome-page.componen
     LoginPageComponent,
     SignupPageComponent,
     DashboardPageComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    HeaderNavigationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ButtonModule
+
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: ReqInterceptorService, multi: true }],
   bootstrap: [AppComponent]
