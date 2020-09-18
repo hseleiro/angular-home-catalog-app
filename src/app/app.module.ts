@@ -10,7 +10,9 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ReqInterceptorService} from './req-interceptor.service';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import {ButtonModule} from "primeng";
-import { HeaderNavigationComponent } from './core/navigation/header-navigation/header-navigation.component';
+import { NavigationComponent } from './core/navigation/navigation.component';
+import { PageHeaderComponent } from './core/page-header/page-header.component';
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -19,14 +21,21 @@ import { HeaderNavigationComponent } from './core/navigation/header-navigation/h
     SignupPageComponent,
     DashboardPageComponent,
     WelcomePageComponent,
-    HeaderNavigationComponent
+    NavigationComponent,
+    PageHeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ButtonModule
-
+    ButtonModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: function  tokenGetter() {
+          return localStorage.getItem('token');
+        }
+      }
+    })
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: ReqInterceptorService, multi: true }],
   bootstrap: [AppComponent]

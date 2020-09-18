@@ -15,22 +15,44 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   font-family: 'Alata', sans-serif;
 }
 
-// General
-$primary-color: #5075d0;
-$secondary-color: #e779e2;
-$borders-primary-color: #ecf0f1;
-$icons-font-size: 0.6em;
+a {
+  text-decoration: none;
+}
 
-// Navigation
-$navigation-menu-border-color: $borders-primary-color;
-$navigation-menu-padding: 5px 10px;
-$navigation-menu-iconsFontSize: $icons-font-size;
+// General
+
+  // Alignment
+  $text-align-center: center;
+  $text-align-right: right;
+  $text-align-left: left;
+
+  //color
+  $color-primary: #5075d0;
+  $color-secondary: #e779e2;
+  $color-borders-primary: #ecf0f1;
+
+  // icons && text font size
+  $font-size-primary: 1em;
+  $font-size-icon: 0.6em;
+  $font-size-breadcrumb-text: 0.6em;
+
+  // padding
+  $padding-primary: 5px 10px;
+
+
+// page page-navigation
+$navigation-menu-border-color: $color-borders-primary;
+$navigation-menu-padding: $padding-primary;
+$navigation-menu-icons-font-size: $font-size-icon;
+$navigation-menu-icons-color: $font-size-icon;
 $navigation-menu: (
         "border-color": $navigation-menu-border-color,
         "padding": $navigation-menu-padding,
-        "iconsFontSize": $navigation-menu-iconsFontSize,
-        "primary-color": $primary-color,
-        "secondary-color": $secondary-color
+        "icons-font-size": $navigation-menu-icons-font-size,
+        "icons-color": $navigation-menu-icons-color,
+        "primary-color": $color-primary,
+        "secondary-color": $color-secondary
+
 );
 
 .navigation {
@@ -47,7 +69,51 @@ $navigation-menu: (
 }
 
 .navigation .navigation-actions i {
-  font-size: map.get($navigation-menu, "iconsFontSize");
+  font-size: map.get($navigation-menu, "icons-font-size");
+  color: map.get($navigation-menu, "icons-color");
   margin-left: 5px;
 }
 
+
+// General page title
+
+$page-title: (
+        "padding": $padding-primary,
+        "color": $color-primary,
+        "align": $text-align-center,
+        "font-size": $font-size-primary
+);
+
+.page-title {
+  text-align: map.get($page-title, "align");
+  padding: map.get($page-title, "padding");
+}
+
+.page-title .title {
+  color: map.get($page-title, "color");
+  font-size: map.get($page-title, "font-size");
+}
+
+// Breadcrumbs
+
+$page-breadcrumbs: (
+        "font-size": $font-size-breadcrumb-text,
+        "font-size-icon": $font-size-icon,
+        "color": $color-primary,
+        "padding": $padding-primary
+);
+
+.page-navigation {
+  padding: map.get($page-breadcrumbs, "padding");
+}
+
+.page-navigation .breadcrumb .name {
+  color: map.get($page-breadcrumbs, "color");
+  font-size: map.get($page-breadcrumbs, "font-size");
+}
+
+.page-navigation .breadcrumb .icon i {
+  font-size: map.get($page-breadcrumbs, "font-size-icon");
+  color: map.get($page-breadcrumbs, "color");
+  margin-right: 3px;
+}

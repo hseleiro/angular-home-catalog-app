@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {NavigationOptions} from "../../core/models/navigation/navigation-options";
+import {PageHeader} from '../../core/models/page-header/page-header';
+import {AuthService} from '../../auth.service';
 
 @Component({
   selector: 'app-welcome-page',
@@ -7,18 +8,19 @@ import {NavigationOptions} from "../../core/models/navigation/navigation-options
   styleUrls: ['./welcome-page.component.scss']
 })
 export class WelcomePageComponent implements OnInit {
+  pageHeader: PageHeader;
 
-  menuOptions: NavigationOptions;
-
-  constructor() { }
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.menuOptions = {
-      icons: {
-        bell: 'pi pi-bell',
-        user: 'pi pi-user'
+    this.pageHeader = {
+      header: {
+        title: 'Welcome'
       }
     }
   }
 
+  logOut() {
+    this.authService.logout();
+  }
 }

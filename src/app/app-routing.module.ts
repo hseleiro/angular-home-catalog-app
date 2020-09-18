@@ -4,15 +4,16 @@ import {LoginPageComponent} from './pages/login-page/login-page.component';
 import {SignupPageComponent} from './pages/signup-page/signup-page.component';
 import {DashboardPageComponent} from './pages/dashboard-page/dashboard-page.component';
 import {WelcomePageComponent} from "./pages/welcome-page/welcome-page.component";
+import {AuthGuardService as AuthGuard} from '../app/auth-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
     // Login
   { path: 'login', component: LoginPageComponent },
   { path: 'signup', component: SignupPageComponent },
-  { path: 'dashboard', component: DashboardPageComponent },
+  { path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard] },
     // Landing page
-  { path: 'welcome', component: WelcomePageComponent }
+  { path: 'welcome', component: WelcomePageComponent, canActivate: [AuthGuard] }
 
 ];
 
