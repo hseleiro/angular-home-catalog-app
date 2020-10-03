@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PageNavigation} from '../models/page-navigation/page-navigation';
-import {HelperService} from "../helpers/helper.service";
+import {NavigationStart, Router} from "@angular/router";
+import {AppStateService} from "../services/app-state.service";
+import {UserStateService} from "../services/user-state.service";
 
 @Component({
   selector: 'app-navigation',
@@ -10,14 +12,17 @@ import {HelperService} from "../helpers/helper.service";
 export class NavigationComponent implements OnInit {
 
   pageNavigation: PageNavigation;
-  isLoggedIn: boolean;
+  showIcons: boolean;
+  hasProfile: boolean;
 
-  constructor(public helperService:HelperService) { }
+  constructor(public appStateService: AppStateService, public userStateService: UserStateService) {}
 
   ngOnInit(): void {
-    this.helperService.userState$.subscribe((state) => {
+    this.appStateService.appState$.subscribe((state) => {
       state.forEach((state) => {
-        this.isLoggedIn = state.isLoggedIn;
+        state.showNavBarIcons.subscribe((showNavBarIcons) => {
+          this.showIcons = showNavBarIcons;
+        })
       })
     })
     this.pageNavigation = {
@@ -26,11 +31,6 @@ export class NavigationComponent implements OnInit {
         user: 'pi pi-user'
       }
     }
-  }
-
-
-  getUserState() {
-
   }
 
 }

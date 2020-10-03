@@ -3,7 +3,7 @@ import {RequestService} from './request.service';
 import {Router} from '@angular/router';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {shareReplay, tap} from 'rxjs/operators';
-import {HelperService} from "./core/helpers/helper.service";
+import {HelperService} from "./core/services/helper.service";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,6 @@ export class AuthService {
       shareReplay(),
       tap((res: HttpResponse<any>) => {
         this.setSession(res.body._id, res.headers.get('x-access-token'), res.headers.get('x-refresh-token'));
-        this.helperService.addUserState(true);
       })
     );
   }
@@ -33,7 +32,6 @@ export class AuthService {
 
   logout() {
     this.removeSession();
-    this.helperService.addUserState(false);
     this.router.navigate(['/login']);
   }
 
