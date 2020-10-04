@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../../auth.service';
+import {AuthService} from '../../services/authorization-service/auth.service';
 import {Router} from '@angular/router';
 import {HttpResponse} from '@angular/common/http';
 
@@ -17,8 +17,8 @@ export class SignupPageComponent implements OnInit {
 
   onSignupButtonClicked(email: string, password: string) {
     this.authService.signup(email, password).subscribe((res: HttpResponse<any>) => {
-      console.log(res);
-      this.router.navigate(['/login']);
+      console.log('res', res);
+      this.router.navigate(['/welcome']);
     });
   }
 

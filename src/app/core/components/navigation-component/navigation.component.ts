@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PageNavigation} from '../models/page-navigation/page-navigation';
+import {PageNavigationModel} from '../../models/page-navigation/page-navigation-model';
 import {NavigationStart, Router} from "@angular/router";
-import {AppStateService} from "../services/app-state.service";
-import {UserStateService} from "../services/user-state.service";
+import {AppStateService} from "../../services/app-state-service/app-state.service";
+import {UserStateService} from "../../services/user-state-service/user-state.service";
 
 @Component({
   selector: 'app-navigation',
@@ -11,9 +11,8 @@ import {UserStateService} from "../services/user-state.service";
 })
 export class NavigationComponent implements OnInit {
 
-  pageNavigation: PageNavigation;
+  pageNavigation: PageNavigationModel;
   showIcons: boolean;
-  hasProfile: boolean;
 
   constructor(public appStateService: AppStateService, public userStateService: UserStateService) {}
 
@@ -28,7 +27,7 @@ export class NavigationComponent implements OnInit {
     this.pageNavigation = {
       icons: {
         bell: 'pi pi-bell',
-        user: 'pi pi-user'
+        user: 'pi pi-user-model'
       }
     }
   }

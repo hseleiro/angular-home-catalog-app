@@ -1,5 +1,5 @@
 import {Observable} from "rxjs";
 
-export class AppState {
+export class AppModel {
     showNavBarIcons: Observable<boolean>;
 }

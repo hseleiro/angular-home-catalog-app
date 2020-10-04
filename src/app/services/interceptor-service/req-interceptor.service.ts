@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {AuthService} from './auth.service';
+import {AuthService} from '../authorization-service/auth.service';
 import {empty, Observable, Subject, throwError} from 'rxjs';
 import {catchError, switchMap, tap} from 'rxjs/operators';
 
@@ -53,7 +53,7 @@ export class ReqInterceptorService implements HttpInterceptor {
       });
     } else {
       this.refreshingAccessToken = true;
-      // we want to call a method in the auth service to send a request to refresh the access token
+      // we want to call a method in the authorization-service service to send a request to refresh the access token
       return this.authService.getNewAccessToken().pipe(
         tap(() => {
           console.log('Access Token Refreshed!');

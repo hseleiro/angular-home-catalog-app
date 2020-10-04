@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {HelperService} from "./helper.service";
-import {AppState} from "../models/app/app-state";
+import {HelperService} from "../helper-service/helper.service";
+import {AppModel} from "../../models/app-model/app-model";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class AppStateService {
     showNavBarIcons: this.helperService._showNavBarIcons,
   }]
 
-  private readonly _appState = new BehaviorSubject<AppState[]>(this.initialState);
+  private readonly _appState = new BehaviorSubject<AppModel[]>(this.initialState);
 
   readonly appState$ = this._appState.asObservable();
 
@@ -23,11 +23,11 @@ export class AppStateService {
     ]
   }
 
-  private get appState(): AppState[] {
+  private get appState(): AppModel[] {
     return this._appState.getValue()
   }
 
-  private set appState(val: AppState[]) {
+  private set appState(val: AppModel[]) {
     this._appState.next(val);
   }
 

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {RequestService} from './request.service';
+import {RequestService} from '../request-service/request.service';
 import {Router} from '@angular/router';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {shareReplay, tap} from 'rxjs/operators';
-import {HelperService} from "./core/services/helper.service";
+import {HelperService} from '../../core/services/helper-service/helper.service';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +44,7 @@ export class AuthService {
   }
 
   getUserId() {
-    return localStorage.getItem('user-id');
+    return localStorage.getItem('user-model-id');
   }
 
   setAccessToken(accessToken: string) {
@@ -52,13 +52,13 @@ export class AuthService {
   }
 
   private setSession(userId: string, accessToken: string, refreshToken: string) {
-    localStorage.setItem('user-id', userId);
+    localStorage.setItem('user-model-id', userId);
     localStorage.setItem('x-access-token', accessToken);
     localStorage.setItem('x-refresh-token', refreshToken);
   }
 
   private removeSession() {
-    localStorage.removeItem('user-id');
+    localStorage.removeItem('user-model-id');
     localStorage.removeItem('x-access-token');
     localStorage.removeItem('x-refresh-token');
   }

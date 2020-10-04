@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {PageHeader} from '../../core/models/page-header/page-header';
-import {AuthService} from '../../auth.service';
+import {PageHeaderModel} from '../../core/models/page-header-model/page-header-model';
+import {AuthService} from '../../services/authorization-service/auth.service';
 
 @Component({
   selector: 'app-welcome-page',
@@ -8,7 +8,7 @@ import {AuthService} from '../../auth.service';
   styleUrls: ['./welcome-page.component.scss']
 })
 export class WelcomePageComponent implements OnInit {
-  pageHeader: PageHeader;
+  pageHeader: PageHeaderModel;
 
   constructor(private authService: AuthService) {}
 

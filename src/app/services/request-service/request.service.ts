@@ -23,8 +23,10 @@ export class RequestService {
 
   signup(email: string, password: string) {
     return this.http.post(`${this.ROOT_URL}/users`, {
-      email,
-      password
+      auth: {
+        email,
+        password
+      }
     }, {
       observe: 'response'
     });

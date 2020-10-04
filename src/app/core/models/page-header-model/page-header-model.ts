@@ -1,4 +1,4 @@
-export class PageHeader {
+export class PageHeaderModel {
     header: {
         title: string;
     }

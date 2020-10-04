@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpResponse} from '@angular/common/http';
-import {AuthService} from '../../auth.service';
+import {AuthService} from '../../services/authorization-service/auth.service';
 import {Router} from '@angular/router';
 import {map} from "rxjs/operators";
 

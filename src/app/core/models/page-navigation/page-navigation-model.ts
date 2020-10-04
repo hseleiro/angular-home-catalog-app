@@ -1,4 +1,4 @@
-export class PageNavigation {
+export class PageNavigationModel {
     icons: {
         bell: string;
         user: string;

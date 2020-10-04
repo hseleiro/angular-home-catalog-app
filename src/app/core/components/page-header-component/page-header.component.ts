@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PageHeader} from "../models/page-header/page-header";
+import {PageHeaderModel} from "../../models/page-header-model/page-header-model";
 
 @Component({
   selector: 'app-page-header',
@@ -8,7 +8,7 @@ import {PageHeader} from "../models/page-header/page-header";
 })
 export class PageHeaderComponent implements OnInit {
 
-  @Input() options: PageHeader;
+  @Input() options: PageHeaderModel;
   pageTile: string;
 
   constructor() { }

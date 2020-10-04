@@ -1,7 +1,7 @@
 import {Component, OnInit, SimpleChanges} from '@angular/core';
-import {AuthService} from './auth.service';
+import {AuthService} from './services/authorization-service/auth.service';
 import {NavigationStart, Router} from "@angular/router";
-import {HelperService} from "./core/services/helper.service";
+import {HelperService} from "./core/services/helper-service/helper.service";
 
 @Component({
   selector: 'app-root',
@@ -15,13 +15,18 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe((routerEvent) => {
       if (routerEvent instanceof NavigationStart) {
-        if (!this.authService.getAccessToken()) {
-          this.helperService.hideNavBarIcons(true);
-        } else {
-          this.helperService.showNavBarIcons(true);
-        }
+        this.showNavigationBarIcons();
+        console.log('this.authService.getUserId()', this.authService.getUserId());
       }
     });
+  }
+
+  showNavigationBarIcons() {
+    if (this.authService.getAccessToken()) {
+      this.helperService.showNavBarIcons(true);
+    } else {
+      this.helperService.showNavBarIcons(false);
+    }
   }
 
 }
