@@ -5,6 +5,7 @@ import {SignupPageComponent} from './pages/signup-page/signup-page.component';
 import {DashboardPageComponent} from './pages/dashboard-page/dashboard-page.component';
 import {WelcomePageComponent} from "./pages/welcome-page/welcome-page.component";
 import {AuthGuardService as AuthGuard} from './services/authorization-guard-service/auth-guard.service';
+import {ProfilePageComponent} from "./pages/profile-page/profile-page.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -12,7 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'signup', component: SignupPageComponent },
   { path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard] },
-    // Landing page
+  { path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard] },
   { path: 'welcome', component: WelcomePageComponent, canActivate: [AuthGuard] }
 
 ];

@@ -4,6 +4,6 @@
     </div>
     <div class="navigation-actions" *ngIf="showIcons">
         <i class="{{pageNavigation.icons.bell}}"></i>
-        <i class="{{pageNavigation.icons.user}}"></i>
+        <i class="{{pageNavigation.icons.user}}"><a [routerLink]="[ '/', 'profile' ]">Please create your profile...</a></i>
     </div>
 </div>
