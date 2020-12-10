@@ -1,6 +1,6 @@
 import {Observable} from "rxjs";
 
-export class User {
+export class UserModel {
     name: string;
     email: string;
     userProfile: {

@@ -14,7 +14,15 @@ import { NavigationComponent } from './core/components/navigation-component/navi
 import { PageHeaderComponent } from './core/components/page-header-component/page-header.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { BooksComponent } from './pages/books-page/books.component';
+import {StoreModule} from '@ngrx/store';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import {metaReducers, reducers} from "./shared/state";
+import { BooksListComponent } from './pages/books-page/books-list/books-list.component';
+import { BookDetailComponent } from './pages/books-page/book-detail/book-detail.component';
+import {BooksApiEffects} from "./effects/books-api/books-api.effects";
 
 @NgModule({
   declarations: [
@@ -25,14 +33,21 @@ import {FormsModule} from "@angular/forms";
     WelcomePageComponent,
     NavigationComponent,
     PageHeaderComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    BooksComponent,
+    BooksListComponent,
+    BookDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     ButtonModule,
     InputTextModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([BooksApiEffects]),
     JwtModule.forRoot({
       config: {
         tokenGetter: function tokenGetter() {

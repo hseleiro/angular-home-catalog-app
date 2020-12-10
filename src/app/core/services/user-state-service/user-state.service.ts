@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {User} from "../../models/user-model/user";
+import {UserModel} from "../../models/user-model/user.model";
 import {HelperService} from "../helper-service/helper.service";
 
 @Injectable({
@@ -17,7 +17,7 @@ export class UserStateService {
     }
   }]
 
-  private readonly _userState = new BehaviorSubject<User[]>(this.initialState);
+  private readonly _userState = new BehaviorSubject<UserModel[]>(this.initialState);
 
   readonly userState$ = this._userState.asObservable();
 
@@ -28,11 +28,11 @@ export class UserStateService {
     ]
   }
 
-  private get userState(): User[] {
+  private get userState(): UserModel[] {
     return this._userState.getValue()
   }
 
-  private set userState(val: User[]) {
+  private set userState(val: UserModel[]) {
     this._userState.next(val);
   }
 

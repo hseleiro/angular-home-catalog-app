@@ -30,7 +30,7 @@ export class HelperService {
     return this._userHasProfile.next(false);
   }
 
-  // User is Admin
+  // UserModel is Admin
 
   public _userIsAdmin = new BehaviorSubject<boolean>(false);
 

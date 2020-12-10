@@ -6,6 +6,7 @@ import {DashboardPageComponent} from './pages/dashboard-page/dashboard-page.comp
 import {WelcomePageComponent} from "./pages/welcome-page/welcome-page.component";
 import {AuthGuardService as AuthGuard} from './services/authorization-guard-service/auth-guard.service';
 import {ProfilePageComponent} from "./pages/profile-page/profile-page.component";
+import {BooksComponent} from "./pages/books-page/books.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupPageComponent },
   { path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard] },
-  { path: 'welcome', component: WelcomePageComponent, canActivate: [AuthGuard] }
+  { path: 'welcome', component: WelcomePageComponent, canActivate: [AuthGuard] },
+  { path: 'books', component: BooksComponent, canActivate: [AuthGuard] }
 
 ];
 

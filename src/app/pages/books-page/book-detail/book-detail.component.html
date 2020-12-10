@@ -1,0 +1,6 @@
+
+<form [formGroup]="bookForm" #f="ngForm" (submit)="onSubmit(f.value)">
+    <input matInput placeholder="Title" formControlName="title" type="text" />
+    <button type="submit" mat-button>Save</button>
+    <button type="button" mat-button (click)="cancel.emit()">Cancel</button>
+</form>

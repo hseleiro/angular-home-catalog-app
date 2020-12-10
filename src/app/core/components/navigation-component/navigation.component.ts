@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PageNavigationModel} from '../../models/page-navigation/page-navigation-model';
+import {PageNavigationModel} from '../../models/page-navigation/page-navigation.model';
 import {NavigationStart, Router} from "@angular/router";
 import {AppStateService} from "../../services/app-state-service/app-state.service";
 import {UserStateService} from "../../services/user-state-service/user-state.service";

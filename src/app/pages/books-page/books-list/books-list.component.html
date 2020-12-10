@@ -1,0 +1,4 @@
+<div *ngFor="let book of books" (click)="select.emit(book)">
+    <div>{{book.title}}</div>
+    <div (click)="delete.emit(book); $event.stopImmediatePropagation()" style="cursor: pointer">X</div>
+</div>
