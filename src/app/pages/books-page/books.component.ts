@@ -37,6 +37,7 @@ export class BooksComponent implements OnInit {
   /* Create Book */
   createBook(): void {
     this.store.dispatch(BooksPageActions.createBook({ book: this.bookForm.value }))
+    this.store.dispatch(BooksPageActions.enter());
   }
 
   /* Update book */

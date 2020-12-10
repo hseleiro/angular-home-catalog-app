@@ -5,7 +5,7 @@
     </label>
     <button type="submit" mat-button>Save</button>
 </form>
-{{total$ | async}}
+<!--{{total$ | async}}-->
 <app-books-list
         [books]="books$ | async"
         (select)="onSelect($event)"

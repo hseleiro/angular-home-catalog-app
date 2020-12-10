@@ -5,7 +5,7 @@ export interface BookModel {
     description?: string;
 }
 
-export type BookRequiredProps = Pick<BookModel, "title" | "earnings">;
+export type BookRequiredProps = Pick<BookModel, "title" | "earnings" | "_id">;
 
 export function calculateBooksGrossEarnings(books: BookModel[]) {
     return books.reduce((total, book) => {

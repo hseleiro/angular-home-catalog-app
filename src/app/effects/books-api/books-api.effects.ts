@@ -47,7 +47,8 @@ export class BooksApiEffects {
         return this.actions$.pipe(
             ofType(BooksPageActions.updateBook),
             concatMap(action => {
-                return this.booksService.updateBook(action.bookId, action.changes)
+                return this.booksService
+                    .updateBook(action.changes)
                     .pipe(
                         map(book => BooksApiActions.bookUpdated({ book }))
                     )

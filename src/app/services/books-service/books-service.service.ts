@@ -28,8 +28,8 @@ export class BooksServiceService {
     return this.http.delete(`${this.ROOT_URL}/books/` + id)
   }
 
-  public updateBook(id: string, changes: any): Observable<any> {
-    return this.http.put(`${this.ROOT_URL}/books/` + id, {changes})
+  public updateBook(book: BookModel): Observable<any> {
+    return this.http.put(`${this.ROOT_URL}/books/` + book._id, {book})
   }
 
 }
