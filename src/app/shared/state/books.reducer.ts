@@ -32,7 +32,6 @@ export const booksReducer = createReducer(
         };
     }),
     on(BooksPageActions.selectBook, (state, action) => {
-        console.log('action', action)
         return {
             ...state,
             activeBookId: action.bookId

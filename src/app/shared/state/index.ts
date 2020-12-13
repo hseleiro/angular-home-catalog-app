@@ -16,6 +16,7 @@ export const metaReducers: MetaReducer<State>[] = []
 * */
 
 export const selectBookState = (state: State) => state.books;
+
 export const selectActiveBook = createSelector(
     selectBookState,
     fromBooks.selectActiveBook
