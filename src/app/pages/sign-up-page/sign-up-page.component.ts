@@ -3,29 +3,30 @@ import {AuthService} from '../../services/authorization-service/auth.service';
 import {Router} from '@angular/router';
 import {HttpResponse} from '@angular/common/http';
 import {FormControl, FormGroup} from "@angular/forms";
+import {State, Store} from "@ngrx/store";
+import {SignUpPageActions} from "./actions";
 
 @Component({
   selector: 'app-signup-page',
-  templateUrl: './signup-page.component.html',
-  styleUrls: ['./signup-page.component.scss']
+  templateUrl: './sign-up-page.component.html',
+  styleUrls: ['./sign-up-page.component.scss']
 })
-export class SignupPageComponent implements OnInit {
+export class SignUpPageComponent implements OnInit {
 
   public signUpForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl('')
   });
 
-  constructor(private authService: AuthService, private router: Router) { }
+  // @ts-ignore
+  constructor(private store: Store<State>) {}
 
   ngOnInit(): void {
+    this.store.dispatch(SignUpPageActions.enter())
   }
 
-  onSignupButtonClicked() {
-    const signUpCredentials = this.signUpForm.value;
-    this.authService.signup(signUpCredentials).subscribe((res: HttpResponse<any>) => {
-      this.router.navigate(['/login']);
-    });
+  onSignUpButtonClicked() {
+    this.store.dispatch(SignUpPageActions.onUserSignUp({user: this.signUpForm.value}))
   }
 
 }

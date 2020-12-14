@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component';
+import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ReqInterceptorService} from './services/interceptor-service/req-interceptor.service';
@@ -23,12 +23,14 @@ import {metaReducers, reducers} from "./shared/state";
 import { BooksListComponent } from './pages/books-page/books-list/books-list.component';
 import { BookDetailComponent } from './pages/books-page/book-detail/book-detail.component';
 import {BooksApiEffects} from "./effects/books-api/books-api.effects";
+import {SignInApiEffects} from "./effects/sign-in-api/sign-in-api-effects.service";
+import {SignUpApiEffects} from "./effects/sign-up-api/sign-up-effects.service";
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent,
-    SignupPageComponent,
+    SignInPageComponent,
+    SignUpPageComponent,
     DashboardPageComponent,
     WelcomePageComponent,
     NavigationComponent,
@@ -47,7 +49,11 @@ import {BooksApiEffects} from "./effects/books-api/books-api.effects";
     InputTextModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument(),
-    EffectsModule.forRoot([BooksApiEffects]),
+    EffectsModule.forRoot([
+        BooksApiEffects,
+        SignInApiEffects,
+        SignUpApiEffects
+    ]),
     JwtModule.forRoot({
       config: {
         tokenGetter: function tokenGetter() {

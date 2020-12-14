@@ -5,4 +5,4 @@ export interface UserModel {
     password: string;
 }
 
-export type UserRequiredProps = Pick<UserModel, "name" | "_id" | "email">
+export type UserRequiredProps = Pick<UserModel, "name" | "_id" | "email" | "password">

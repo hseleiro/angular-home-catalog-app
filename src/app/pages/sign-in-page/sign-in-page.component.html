@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm" #f="ngForm" (submit)="onLoginButtonClicked()">
+<form [formGroup]="loginForm" #f="ngForm" (submit)="onSignInButtonClicked()">
   <label>
     Email:
     <input type="text" formControlName="email">
@@ -9,3 +9,4 @@
   </label>
   <button type="submit" mat-button>Save</button>
 </form>
+<p class="has-text-grey">Not got an account? <a routerLink="/signup">Sign up</a> now!</p>

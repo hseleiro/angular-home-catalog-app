@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {UserModel} from "../../core/models/user-model/user.model";
+import {UserModel, UserRequiredProps} from "../../core/models/user-model/user.model";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class RequestService {
     this.ROOT_URL = 'http://localhost:9800';
   }
 
-  login(loginCredentials: UserModel) {
+  login(loginCredentials: any) {
     return this.http.post(`${this.ROOT_URL}/users/login`, {
       email: loginCredentials.email,
       password: loginCredentials.password

@@ -3,7 +3,7 @@ import {RequestService} from '../request-service/request.service';
 import {Router} from '@angular/router';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {shareReplay, tap} from 'rxjs/operators';
-import {UserModel} from "../../core/models/user-model/user.model";
+import {UserModel, UserRequiredProps} from "../../core/models/user-model/user.model";
 
 @Injectable({
   providedIn: 'root'
