@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {UserModel} from "../../core/models/user-model/user.model";
 
 @Injectable({
   providedIn: 'root'
@@ -12,19 +13,19 @@ export class RequestService {
     this.ROOT_URL = 'http://localhost:9800';
   }
 
-  login(email: string, password: string) {
+  login(loginCredentials: UserModel) {
     return this.http.post(`${this.ROOT_URL}/users/login`, {
-      email,
-      password
+      email: loginCredentials.email,
+      password: loginCredentials.password
     }, {
       observe: 'response'
     });
   }
 
-  signup(email: string, password: string) {
+  signup(signUpCredentials: UserModel) {
     return this.http.post(`${this.ROOT_URL}/users`, {
-      email,
-      password
+      email: signUpCredentials.email,
+      password: signUpCredentials.password
     }, {
       observe: 'response'
     });

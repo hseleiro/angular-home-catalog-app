@@ -1,10 +1,8 @@
-import {Observable} from "rxjs";
-
-export class UserModel {
+export interface UserModel {
+    _id: string;
     name: string;
     email: string;
-    userProfile: {
-        hasProfile: Observable<boolean>;
-        isAdmin: Observable<boolean>;
-    }
+    password: string;
 }
+
+export type UserRequiredProps = Pick<UserModel, "name" | "_id" | "email">

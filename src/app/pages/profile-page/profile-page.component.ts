@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {UserModel} from "../../core/models/user-model/user.model";
 
 @Component({
   selector: 'app-profile-page',
@@ -8,14 +7,10 @@ import {UserModel} from "../../core/models/user-model/user.model";
 })
 export class ProfilePageComponent implements OnInit {
 
-  public user: UserModel = new UserModel();
-
   constructor() { }
 
   ngOnInit(): void {
 
   }
-
-
 
 }

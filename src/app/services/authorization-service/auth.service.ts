@@ -3,17 +3,17 @@ import {RequestService} from '../request-service/request.service';
 import {Router} from '@angular/router';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {shareReplay, tap} from 'rxjs/operators';
-import {HelperService} from '../../core/services/helper-service/helper.service';
+import {UserModel} from "../../core/models/user-model/user.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private requestService: RequestService, private router: Router, private http: HttpClient, private helperService: HelperService) {}
+  constructor(private requestService: RequestService, private router: Router, private http: HttpClient) {}
 
-  login(email: string, password: string) {
-    return this.requestService.login(email, password).pipe(
+  login(loginCredentials: UserModel) {
+    return this.requestService.login(loginCredentials).pipe(
       shareReplay(),
       tap((res: HttpResponse<any>) => {
         this.setSession(res.body._id, res.headers.get('x-access-token'), res.headers.get('x-refresh-token'));
@@ -21,8 +21,8 @@ export class AuthService {
     );
   }
 
-  signup(email: string, password: string) {
-    return this.requestService.signup(email, password).pipe(
+  signup(signUpCredentials: UserModel) {
+    return this.requestService.signup(signUpCredentials).pipe(
       shareReplay(),
       tap((res: HttpResponse<any>) => {
         this.setSession(res.body._id, res.headers.get('x-access-token'), res.headers.get('x-refresh-token'));
