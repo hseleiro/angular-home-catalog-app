@@ -16,20 +16,20 @@ export class AuthService {
   constructor(private requestService: RequestService, private router: Router, private http: HttpClient, private store: Store<State>) {}
 
   login(loginCredentials: UserModel) {
-    return this.requestService.login(loginCredentials).pipe(
+    return this.requestService.signIn(loginCredentials).pipe(
       shareReplay(),
       tap((res: HttpResponse<any>) => {
-        this.store.dispatch(NotificationActions.NotificationSuccess({message: res.headers.get('success-message')}))
+        this.store.dispatch(NotificationActions.NotificationSuccess({message: res.body.notification}))
         this.setSession(res.body._id, res.headers.get('x-access-token'), res.headers.get('x-refresh-token'));
       })
     );
   }
 
   signup(signUpCredentials: UserModel) {
-    return this.requestService.signup(signUpCredentials).pipe(
+    return this.requestService.signUp(signUpCredentials).pipe(
       shareReplay(),
       tap((res: HttpResponse<any>) => {
-        this.store.dispatch(NotificationActions.NotificationSuccess({message: res.headers.get('success-message')}))
+        this.store.dispatch(NotificationActions.NotificationSuccess({message: res.body.notification}))
         this.setSession(res.body._id, res.headers.get('x-access-token'), res.headers.get('x-refresh-token'));
       })
     );
