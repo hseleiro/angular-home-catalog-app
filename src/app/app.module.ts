@@ -25,6 +25,8 @@ import { BookDetailComponent } from './pages/books-page/book-detail/book-detail.
 import {BooksApiEffects} from "./effects/books-api/books-api.effects";
 import {SignInApiEffects} from "./effects/sign-in-api/sign-in-api-effects.service";
 import {SignUpApiEffects} from "./effects/sign-up-api/sign-up-effects.service";
+import {ToastModule} from 'primeng/toast';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -47,12 +49,13 @@ import {SignUpApiEffects} from "./effects/sign-up-api/sign-up-effects.service";
     ReactiveFormsModule,
     ButtonModule,
     InputTextModule,
-    StoreModule.forRoot(reducers, { metaReducers }),
+    BrowserAnimationsModule,
+    StoreModule.forRoot(reducers, {metaReducers}),
     StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot([
-        BooksApiEffects,
-        SignInApiEffects,
-        SignUpApiEffects
+      BooksApiEffects,
+      SignInApiEffects,
+      SignUpApiEffects
     ]),
     JwtModule.forRoot({
       config: {
@@ -61,7 +64,8 @@ import {SignUpApiEffects} from "./effects/sign-up-api/sign-up-effects.service";
         }
       }
     }),
-    FormsModule
+    FormsModule,
+    ToastModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: ReqInterceptorService, multi: true }],
   bootstrap: [AppComponent]

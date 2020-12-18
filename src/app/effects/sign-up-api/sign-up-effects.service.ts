@@ -4,14 +4,17 @@ import {AuthService} from "../../services/authorization-service/auth.service";
 import {Router} from "@angular/router";
 import {SignUpApiActions, SignUpPageActions} from "../../pages/sign-up-page/actions";
 import {map, mergeMap, tap} from "rxjs/operators";
+import {NotificationActions} from "../../shared/actions";
+import {State, Store} from "@ngrx/store";
 
 @Injectable()
 export class SignUpApiEffects {
 
-    constructor(private actions$: Actions,
+    // @ts-ignore
+    constructor(private store: Store<State>,
+                private actions$: Actions,
                 private authService: AuthService,
                 private router: Router,) {}
-
 
     signUpUser$ = createEffect(() => {
         return this.actions$.pipe(
@@ -23,7 +26,9 @@ export class SignUpApiEffects {
                     )
                 )
             }),
-            tap((action) => this.router.navigate(['/login']))
+            tap((action) => {
+                this.router.navigate(['/login'])
+            })
         )
     })
 }

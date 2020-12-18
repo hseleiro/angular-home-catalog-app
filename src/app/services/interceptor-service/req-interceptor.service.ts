@@ -3,26 +3,26 @@ import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest}
 import {AuthService} from '../authorization-service/auth.service';
 import {empty, Observable, Subject, throwError} from 'rxjs';
 import {catchError, switchMap, tap} from 'rxjs/operators';
+import {State, Store} from "@ngrx/store";
+import {NotificationActions} from "../../shared/actions";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReqInterceptorService implements HttpInterceptor {
 
-  constructor(private authService: AuthService) { }
+  // @ts-ignore
+    constructor(private authService: AuthService, private store: Store<State>) { }
 
   refreshingAccessToken: boolean;
 
   accessTokenRefreshed: Subject<any> = new Subject();
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
-
     request = this.addAuthHeader(request);
-
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-        console.log(error);
-
+        this.store.dispatch(NotificationActions.NotificationError({message: error.error}))
         if (error.status === 401) {
           return this.refreshAccessToken()
             .pipe(
@@ -31,13 +31,11 @@ export class ReqInterceptorService implements HttpInterceptor {
                 return next.handle(request);
               }),
               catchError((err: any) => {
-                console.log(err);
                 this.authService.logout();
                 return empty();
               })
             );
         }
-
         return throwError(error);
       })
     );
