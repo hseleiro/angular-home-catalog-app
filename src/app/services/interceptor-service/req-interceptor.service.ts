@@ -22,7 +22,11 @@ export class ReqInterceptorService implements HttpInterceptor {
     request = this.addAuthHeader(request);
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-        this.store.dispatch(NotificationActions.NotificationError({message: error.error}))
+        this.store.dispatch(NotificationActions.NotificationError({
+            message: error.error.message,
+            code: error.error.statusCode,
+            statusText: error.statusText
+        }))
         if (error.status === 401) {
           return this.refreshAccessToken()
             .pipe(

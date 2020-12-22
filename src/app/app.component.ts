@@ -3,7 +3,7 @@ import {State, Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {MessageService} from 'primeng/api';
 import {NotificationModule} from "./core/models/notification-model/notification.model";
-import {selectAllBooks, selectNotification} from "./shared/state";
+import {selectNotification} from "./shared/state";
 
 @Component({
   selector: 'app-root',
@@ -22,10 +22,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.message$.subscribe((message) => {
+      const userMessage = `${message.detail} (${message.code} - ${message.statusText})`;
       this.messageService.add({
         severity: message.severity,
         summary: message.summary,
-        detail: message.detail
+        detail: userMessage
       })
     })
 

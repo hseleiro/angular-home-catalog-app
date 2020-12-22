@@ -4,7 +4,6 @@ import {AuthService} from "../../services/authorization-service/auth.service";
 import {Router} from "@angular/router";
 import {SignUpApiActions, SignUpPageActions} from "../../pages/sign-up-page/actions";
 import {map, mergeMap, tap} from "rxjs/operators";
-import {NotificationActions} from "../../shared/actions";
 import {State, Store} from "@ngrx/store";
 
 @Injectable()

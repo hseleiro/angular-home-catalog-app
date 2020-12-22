@@ -6,6 +6,8 @@ export interface State {
         detail: string | null;
         summary: string | null;
         severity: string | null;
+        code: string | null;
+        statusText: string | null;
     }
 }
 
@@ -13,7 +15,9 @@ export const initialState: State = {
     notifications: {
         detail: null,
         summary: null,
-        severity: null
+        severity: null,
+        code: null,
+        statusText: null
     }
 }
 
@@ -26,6 +30,8 @@ export const notificationReducer = createReducer(
                 ...state,
                 notifications: {
                     detail: action.message,
+                    code: action.code,
+                    statusText: action.statusText,
                     summary: 'Success',
                     severity: 'success'
                 }
@@ -39,6 +45,8 @@ export const notificationReducer = createReducer(
                 ...state,
                 notifications: {
                     detail: action.message,
+                    code: action.code,
+                    statusText: action.statusText,
                     summary: 'Warning',
                     severity: 'warn'
                 }
@@ -52,6 +60,8 @@ export const notificationReducer = createReducer(
                 ...state,
                 notifications: {
                     detail: action.message,
+                    code: action.code,
+                    statusText: action.statusText,
                     summary: 'Error',
                     severity: 'error'
                 }

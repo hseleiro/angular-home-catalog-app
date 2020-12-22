@@ -19,7 +19,11 @@ export class AuthService {
     return this.requestService.signIn(loginCredentials).pipe(
       shareReplay(),
       tap((res: HttpResponse<any>) => {
-        this.store.dispatch(NotificationActions.NotificationSuccess({message: res.body.notification}))
+        this.store.dispatch(NotificationActions.NotificationSuccess({
+          message: res.body.notification,
+          code: '201',
+          statusText: 'Success Request'
+        }))
         this.setSession(res.body._id, res.headers.get('x-access-token'), res.headers.get('x-refresh-token'));
       })
     );
@@ -29,7 +33,11 @@ export class AuthService {
     return this.requestService.signUp(signUpCredentials).pipe(
       shareReplay(),
       tap((res: HttpResponse<any>) => {
-        this.store.dispatch(NotificationActions.NotificationSuccess({message: res.body.notification}))
+        this.store.dispatch(NotificationActions.NotificationSuccess({
+          message: res.body.notification,
+          code: '201',
+          statusText: 'Success Request'
+        }))
         this.setSession(res.body._id, res.headers.get('x-access-token'), res.headers.get('x-refresh-token'));
       })
     );

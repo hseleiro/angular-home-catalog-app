@@ -10,7 +10,11 @@ export class AuthGuardService implements CanActivate {
     constructor(public authService: AuthService, public router: Router, private store: Store<State>) {}
     canActivate(): boolean {
         if (!this.authService.getAccessToken()) {
-            this.store.dispatch(NotificationActions.NotificationWarning({message: 'User not authorized, please login.'}));
+            this.store.dispatch(NotificationActions.NotificationWarning({
+                message: 'User not authorized, please login.',
+                code: '401',
+                statusText: 'Unauthorized'
+            }));
             this.router.navigate(['/login']);
             return false;
         }
