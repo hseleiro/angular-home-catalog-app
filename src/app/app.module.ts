@@ -27,6 +27,7 @@ import {SignInApiEffects} from "./effects/sign-in-api/sign-in-api-effects.servic
 import {SignUpApiEffects} from "./effects/sign-up-api/sign-up-effects.service";
 import {ToastModule} from 'primeng/toast';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { AuthFormComponent } from './shared/components/auth-form/auth-form.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     ProfilePageComponent,
     BooksComponent,
     BooksListComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    AuthFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,15 @@
+<form [formGroup]="formGroup" #f="ngForm" (submit)="buildForm()">
+    <label>
+        Email:
+        <input type="text" formControlName="email">
+    </label>
+    <label>
+        Password:
+        <input type="text" formControlName="password">
+    </label>
+    <button type="submit" mat-button>Save</button>
+</form>
+<p *ngIf="formAction === 'signIn'" class="has-text-grey">Not got an account? <a routerLink="/signup">Sign up</a> now!</p>
+<p *ngIf="formAction === 'signUp'" class="has-text-grey">Already got an account? <a routerLink="/login">Login up</a> now!</p>
+
+

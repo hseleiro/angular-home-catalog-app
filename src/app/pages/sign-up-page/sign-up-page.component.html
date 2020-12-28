@@ -1,11 +1,1 @@
-<form [formGroup]="signUpForm" #f="ngForm" (submit)="onSignUpButtonClicked()">
-  <label>
-    Email:
-    <input type="text" formControlName="email">
-  </label>
-  <label>
-    Password:
-    <input type="text" formControlName="password">
-  </label>
-  <button type="submit" mat-button>Save</button>
-</form>
+<app-auth-form [formAction]="formAction" (credentials)="onSignUpButtonClicked($event)"></app-auth-form>

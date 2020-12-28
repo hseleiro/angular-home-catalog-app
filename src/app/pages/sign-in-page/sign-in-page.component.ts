@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
 import {State, Store} from "@ngrx/store";
 import {SignInPageActions} from "./actions";
 
@@ -10,20 +9,18 @@ import {SignInPageActions} from "./actions";
 })
 export class SignInPageComponent implements OnInit {
 
-  public loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
-  });
+  public formAction: string;
 
   // @ts-ignore
   constructor(private store: Store<State>) {}
 
   ngOnInit(): void {
-    this.store.dispatch(SignInPageActions.enter())
+    this.formAction = 'signIn';
+    this.store.dispatch(SignInPageActions.enter());
   }
 
-  onSignInButtonClicked(): void {
-    this.store.dispatch(SignInPageActions.onUserSignIn({user: this.loginForm.value}));
+  onSignInButtonClicked(credentials): void {
+    this.store.dispatch(SignInPageActions.onUserSignIn({user: credentials}));
   }
 
 }

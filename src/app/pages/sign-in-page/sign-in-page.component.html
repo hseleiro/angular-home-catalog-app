@@ -1,12 +1,1 @@
-<form [formGroup]="loginForm" #f="ngForm" (submit)="onSignInButtonClicked()">
-  <label>
-    Email:
-    <input type="text" formControlName="email">
-  </label>
-  <label>
-    Password:
-    <input type="text" formControlName="password">
-  </label>
-  <button type="submit" mat-button>Save</button>
-</form>
-<p class="has-text-grey">Not got an account? <a routerLink="/signup">Sign up</a> now!</p>
+<app-auth-form [formAction]="formAction" (credentials)="onSignInButtonClicked($event)"></app-auth-form>
