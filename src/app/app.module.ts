@@ -28,6 +28,8 @@ import {SignUpApiEffects} from "./effects/sign-up-api/sign-up-effects.service";
 import {ToastModule} from 'primeng/toast';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { AuthFormComponent } from './shared/components/auth-form/auth-form.component';
+import { InputComponent } from './shared/components/input/input.component';
+import { PasswordComponent } from './shared/components/password/password.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { AuthFormComponent } from './shared/components/auth-form/auth-form.compo
     BooksComponent,
     BooksListComponent,
     BookDetailComponent,
-    AuthFormComponent
+    AuthFormComponent,
+    InputComponent,
+    PasswordComponent
   ],
   imports: [
     BrowserModule,

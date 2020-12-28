@@ -1,13 +1,14 @@
 <form [formGroup]="formGroup" #f="ngForm" (submit)="buildForm()">
-    <label>
-        Email:
-        <input type="text" formControlName="email">
-    </label>
-    <label>
-        Password:
-        <input type="text" formControlName="password">
-    </label>
+    <app-input [type]="'text'" [placeholder]="'Email'" [control]="formGroup.get('email')"
+               [minLength]="3" [maxLength]="25"
+               [id]="'email'" [formGroup]="formGroup" [label]="'Email'"></app-input>
+
+    <app-password [placeholder]="'Password'" [control]="formGroup.get('password')"
+                  [minLength]="8" [maxLength]="15"
+                  [id]="'password'" [formGroup]="formGroup" [label]="'Password'"></app-password>
+
     <button type="submit" mat-button>Save</button>
+
 </form>
 <p *ngIf="formAction === 'signIn'" class="has-text-grey">Not got an account? <a routerLink="/signup">Sign up</a> now!</p>
 <p *ngIf="formAction === 'signUp'" class="has-text-grey">Already got an account? <a routerLink="/login">Login up</a> now!</p>
